@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace EJ04
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    abstract class Encriptador: IEncriptador
+	/// <summary>
+	/// 
+	/// </summary>
+	public abstract class Encriptador: IEncriptador
     {
         /// <summary>
         /// Representa el Nombre del Encriptador
