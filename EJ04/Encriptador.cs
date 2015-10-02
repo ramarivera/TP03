@@ -20,7 +20,10 @@ namespace EJ04
         /// 
         /// </summary>
         /// <param name="pNombre"></param>
-        public Encriptador(string pNombre);
+        public Encriptador(string pNombre)
+		{
+			Nombre = pNombre;
+		}
 
         /// <summary>
         /// Propiedad Nombre, solo lectura
@@ -36,13 +39,13 @@ namespace EJ04
         /// </summary>
         /// <param name="pCadena"></param>
         /// <returns></returns>
-        public abstract string IEncriptador.Encriptar(string pCadena);
+        public abstract string Encriptar(string pCadena);
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="pCadena"></param>
         /// <returns></returns>
-        public abstract string IEncriptador.Desencriptar(string pCadena);
+        public abstract string Desencriptar(string pCadena);
     }
 }
