@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EnigmaMachine;
+using EJ04;
 
 namespace EJ04
 {
