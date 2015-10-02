@@ -10,6 +10,13 @@ namespace EJ04
     {
         static void Main(string[] args)
         {
+            EncriptadorCesar cesar = new EncriptadorCesar(28);
+            string cadena = Console.ReadLine();
+            cadena = cesar.Encriptar(cadena);
+            Console.WriteLine(cadena);
+            Console.ReadKey();
+            Console.WriteLine(cesar.Desencriptar(cadena));
+            Console.ReadKey();
         }
     }
 }

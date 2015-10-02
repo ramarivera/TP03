@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace EJ04
 {
-	class EncriptadorAES : Encriptador
+	public class EncriptadorAES : Encriptador
 	{
 
-		public EncriptadorAES() : base("EncriptadorAES") { }
-
+		public EncriptadorAES() : base("AES") { }
 
 		public override string Encriptar(string pCadena)
 		{
