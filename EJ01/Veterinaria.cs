@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace EJ01
 {
-    /// <summary>
-    /// Representa una veterinaria para la atencion de animales
-    /// </summary>
-	class Veterinaria
+	/// <summary>
+	/// Representa una veterinaria para la atencion de animales
+	/// </summary>
+	public class Veterinaria
 	{
         /// <summary>
         /// Acepta los animales en la veterinaria, haciendo que emitan su sonido

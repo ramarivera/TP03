@@ -9,7 +9,7 @@ namespace EJ01
     /// <summary>
     /// Representa un perro. Es una subclase de la clase Animal
     /// </summary>
-	class Perro : Animal
+	internal class Perro : Animal
 	{
         /// <summary>
         /// Representa la accion de emitir ruido de un perro, sobreescribiendo el metodo de la clase Animal

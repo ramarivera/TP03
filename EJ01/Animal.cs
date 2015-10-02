@@ -9,7 +9,7 @@ namespace EJ01
     /// <summary>
     /// Representa un animal que puede ser atendido en la veterinaria
     /// </summary>
-	abstract class  Animal
+	internal abstract class  Animal
 	{
         /// <summary>
         /// Representa la accion de correr de un animal
