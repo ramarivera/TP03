@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace EJ01
 {
-    /// <summary>
-    /// Representa un gato. Es una subclase de la clase Animal
-    /// </summary>
-	class Gato : Animal
+	/// <summary>
+	/// Representa un gato. Es una subclase de la clase Animal
+	/// </summary>
+	public class Gato : Animal
 	{
         /// <summary>
         /// Representa la accion de emitir ruido de un gato, sobreescribiendo el metodo de la clase Animal
