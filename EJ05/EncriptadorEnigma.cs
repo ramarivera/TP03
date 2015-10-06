@@ -6,44 +6,59 @@ using System.Threading.Tasks;
 using EnigmaMachine;
 using EJ04;
 
-namespace EJ04
+namespace EJ05
 {
-	class EncriptadorEnigma : Encriptador
-	{
+    class EncriptadorEnigma : Encriptador
+    {
 
-		private EnigmaEngine iMaquinaEnigma;
+        public EnigmaEngine MaquinaEnigma { get; set; }
+        public int[] Rotores { get; set; }
+        public char[] Anillos { get; set; }
+        public string Conexiones { get; set; }
+        public EncriptadorEnigma() : base("EncriptadorEnigma")
+        {
+            MaquinaEnigma = new EnigmaEngine();
+        }
 
-		private EnigmaEngine MaquinaEnigma
-		{
-			get { return this.iMaquinaEnigma; }
-			set { this.iMaquinaEnigma = value; }
-		}
 
-		public EncriptadorEnigma() : base("EncriptadorEnigma")
-		{
-			MaquinaEnigma = new EnigmaEngine();
-		}
-
-		public void Configurar(int[] pRotores, char[] pAnillos, string pConexiones)
-		{
-			MaquinaEnigma.Configurar(pRotores, pAnillos, pConexiones);
-		}
-
-		public void Configurar()
-		{
-			int[] pRotores = { 1, 2, 3 };
-			char[] pAnillos = { 'A', 'A', 'A' };
-			string pConexiones = "ADFTHUJIKOLP";
+        public EncriptadorEnigma(int[] pRotores, char[] pAnillos, string pConexiones) : this()
+        {
+            Rotores = pRotores;
+            Anillos = pAnillos;
+            Conexiones = pConexiones;
             MaquinaEnigma.Configurar(pRotores, pAnillos, pConexiones);
-		}
-		public override string Encriptar(string pCadena)
+        }
+
+
+        private void Reiniciar()
+        {
+            MaquinaEnigma.Configurar(Rotores, Anillos, Conexiones);
+        }
+
+        /*
+        private string RegenerarMinusculas(string pCadenaCifrada, string pCadenaOriginal)
+        {
+            StringBuilder lSbuilder = new StringBuilder();
+
+            for (int i = 0; i < lResult.Length; i++)
+            {
+                lSbuilder.Append(char.IsUpper(pCadena[i]) ? lResult[i] : char.ToUpper(lResult[i]));
+            }
+        }*/
+
+        public override string Encriptar(string pCadena)
 		{
-			return MaquinaEnigma.Encriptar(pCadena);
+            string lResult = MaquinaEnigma.Encriptar(pCadena);
+            Reiniciar();
+            return lResult;
+
 		}
 
 		public override string Desencriptar(string pCadena)
 		{
-			return MaquinaEnigma.Desencriptar(pCadena);
-		}
+            string lResult = MaquinaEnigma.Desencriptar(pCadena);
+            Reiniciar();
+            return lResult;
+        }
 	}
 }
