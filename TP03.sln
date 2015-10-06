@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EJ01", "EJ01\EJ01.csproj", "{8EBFF79E-5004-4E19-AF05-794E947C9CD9}"
 EndProject
@@ -20,6 +20,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EJ05", "EJ05\EJ05.csproj", "{DA771F87-2B50-4165-86C4-0B471245B3CD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EJ04.Test", "EJ04.Test\EJ04.Test.csproj", "{54BE9563-9FEF-4695-B840-7ACD57B12673}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EJ05.Test", "EJ05.Test\EJ05.Test.csproj", "{9E1C5B03-056E-4B9B-8329-889B43B95840}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -99,6 +101,14 @@ Global
 		{54BE9563-9FEF-4695-B840-7ACD57B12673}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54BE9563-9FEF-4695-B840-7ACD57B12673}.Release|Any CPU.Build.0 = Release|Any CPU
 		{54BE9563-9FEF-4695-B840-7ACD57B12673}.Release|x86.ActiveCfg = Release|Any CPU
+		{9E1C5B03-056E-4B9B-8329-889B43B95840}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E1C5B03-056E-4B9B-8329-889B43B95840}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E1C5B03-056E-4B9B-8329-889B43B95840}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9E1C5B03-056E-4B9B-8329-889B43B95840}.Debug|x86.Build.0 = Debug|Any CPU
+		{9E1C5B03-056E-4B9B-8329-889B43B95840}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E1C5B03-056E-4B9B-8329-889B43B95840}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E1C5B03-056E-4B9B-8329-889B43B95840}.Release|x86.ActiveCfg = Release|Any CPU
+		{9E1C5B03-056E-4B9B-8329-889B43B95840}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

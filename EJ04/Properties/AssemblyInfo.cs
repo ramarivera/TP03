@@ -34,3 +34,10 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+
+// Me permite testear los metodos internos en otras Assemblies
+[assembly: InternalsVisibleTo("EJ05.Test")]
+[assembly: InternalsVisibleTo("EJ04.Test")]
+
+// Me permite definir una nueva FabricaEncriptadores en la Assemblie EJ05, y poder acceder a los metodos internos de los encriptadores
+[assembly: InternalsVisibleTo("EJ05")]
