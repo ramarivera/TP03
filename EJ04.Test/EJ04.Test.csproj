@@ -45,13 +45,17 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
+          <Private>False</Private>
+        </Reference>
       </ItemGroup>
     </Otherwise>
   </Choose>
   <ItemGroup>
     <Compile Include="EncriptadorCesarTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="EncriptadorNuloTest.cs" />
+    <Compile Include="EncriptadorAESTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EJ04\EJ04.csproj">

@@ -5,7 +5,7 @@ using EJ04;
 namespace EJ04.Test
 {
     [TestClass]
-    public class EncriptadorCesarTest
+    public class EncriptadorNuloTest
     {
         [TestMethod]
         public void Encriptar_WithHola_ReturnsEqual()
