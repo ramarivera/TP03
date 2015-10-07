@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EJ03.Test01
+namespace EJ03.Test
 {
 	[TestClass]
 	public class EvaluadorMontoTest
