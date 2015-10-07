@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
+using System.Collections.Specialized;
 using EJ04;
+using EJ05.Properties;
 
 namespace EJ05
 {
@@ -11,24 +14,63 @@ namespace EJ05
     {
         private static FabricaEncriptadores cInstancia;
         private static Dictionary<string, IEncriptador> iEncriptadores;
-        private static readonly int CES_DESP = 10;
-        private static readonly string AES_SALT = "Rivera";
-        private static readonly string AES_PASSWORD = "pFlEmEL5_¡4#pF";
-         private static readonly int[] ENG_ROTORES = { 1, 2, 3 };
-        private static readonly char[] ENG_ANILLO = { 'A', 'A', 'A' };
-        private static readonly string ENG_CONEXIONES= "ADFTHUJIKOLP";
-
+     
         private FabricaEncriptadores()
         {
             iEncriptadores = new Dictionary<string, IEncriptador>();
 
-            iEncriptadores.Add("CESAR", new EncriptadorCesar(CES_DESP));
-            iEncriptadores.Add("AES", new EncriptadorAES(AES_PASSWORD, AES_SALT));
-            iEncriptadores.Add("ENIGMA", new EncriptadorEnigma(ENG_ROTORES,ENG_ANILLO,ENG_CONEXIONES));
-            iEncriptadores.Add("NULO", new EncriptadorNulo());
+            iEncriptadores.Add("Cesar", new EncriptadorCesar(GetCesarDesplazamiento()));
+            iEncriptadores.Add("AES", new EncriptadorAES(GetAESContraseña(), GetAESSal()));
+            iEncriptadores.Add("Enigma", new EncriptadorEnigma(GetEnigmaRotores(),GetEnigmaAnillos(),GetEnigmaConexiones()));
+            iEncriptadores.Add("Nulo", new EncriptadorNulo());
         }
+		private static int GetCesarDesplazamiento()
+		{
+			return Settings.Default.CesDesplazamiento;            
+		}
+		private static string GetAESSal()
+		{
+			return Settings.Default.AESSal;
+		}
+		private static string GetAESContraseña()
+		{
+			return Settings.Default.AESContraseña;
+		}
 
-        public static FabricaEncriptadores Instancia
+		internal static char[] GetEnigmaAnillos ()
+		{
+			StringCollection lStringCol = Settings.Default.EngAnillos;
+			int i = 0;
+			char[] lArreglo = new char[lStringCol.Count];
+
+			foreach (String lString in lStringCol)
+			{
+				lArreglo[i++] = Convert.ToChar(lString);
+			}
+
+			return lArreglo;
+		}
+
+		private static int[] GetEnigmaRotores()
+		{
+			StringCollection lStringCol = Settings.Default.EngRotores;
+			int i = 0;
+			int[] lArreglo = new int[lStringCol.Count];
+
+			foreach (String lString in lStringCol)
+			{
+				lArreglo[i++] = Convert.ToInt32(lString);
+			}
+
+			return lArreglo;
+		}
+
+		private static string GetEnigmaConexiones()
+		{
+			return Settings.Default.EngConexiones;
+		}
+
+		public static FabricaEncriptadores Instancia
         {
             get
             {
@@ -47,7 +89,7 @@ namespace EJ05
             }
             else
             {
-                return iEncriptadores["NULO"];
+                return iEncriptadores["Nulo"];
             }
         }
 

@@ -129,7 +129,7 @@ namespace EJ03
                             Console.WriteLine("Su edad debe ser entre 18 y 75");
                             Console.WriteLine("Su antiguedad debe ser mayor a 6 meses");
                             Console.WriteLine("Su sueldo debe ser mayor a $5000");
-                            Console.WriteLine("Verifique que el monto solicita y la cantidad de cuotas se corresponda con su tipo de cliente");
+                            Console.WriteLine("Verifique que el monto solicitado y la cantidad de cuotas se corresponda con su tipo de cliente");
                         }
 						Console.ReadKey();
 						Console.WriteLine();

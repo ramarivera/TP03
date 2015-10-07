@@ -17,10 +17,10 @@ namespace EJ04
         private FabricaEncriptadores()
         {
             iEncriptadores = new Dictionary<string,IEncriptador>();
-          
-            iEncriptadores.Add("CESAR", new EncriptadorCesar(CESAR_DESP));
+    
+            iEncriptadores.Add("Cesar", new EncriptadorCesar(CESAR_DESP));
             iEncriptadores.Add("AES", new EncriptadorAES(AES_PASSWORD, AES_SALT));
-            iEncriptadores.Add("NULO", new EncriptadorNulo());
+            iEncriptadores.Add("Nulo", new EncriptadorNulo());
         }
 
         public static FabricaEncriptadores Instancia
@@ -30,19 +30,28 @@ namespace EJ04
                 return cInstancia;}
         }
 
-        public IEncriptador GetEncriptador(string nombre) 
+        public static IEncriptador GetEncriptador(string nombre) 
         {
             IEncriptador resultado;
-            if (iEncriptadores.TryGetValue(nombre.ToUpper(), out resultado))
+            if (iEncriptadores.TryGetValue(nombre, out resultado))
             {
                 return resultado;
             }
             else
             {
-                return iEncriptadores["NULO"];
+                return iEncriptadores["Nulo"];
             }
         }
 
+        public static List<string> GetNombres()
+        {
+            List<string> nombres = new List<string>();
+            foreach (string nombre in iEncriptadores.Keys)
+            {
+                nombres.Add(nombre);
+            }
+            return nombres;
+        }
 
     }
 }

@@ -46,6 +46,11 @@ namespace EJ05
             }
         }*/
 
+        /// <summary>
+        /// Encripta una cadena mediante el método Enigma. Soporta solo las 26 letras del abecedario, en mayuscula o minuscula, y numeros
+        /// </summary>
+        /// <param name="pCadena">Cadena a desencriptar</param>
+        /// <returns>Cadena desencriptada</returns>
         public override string Encriptar(string pCadena)
 		{
             string lResult = MaquinaEnigma.Encriptar(pCadena);
@@ -54,6 +59,11 @@ namespace EJ05
 
 		}
 
+        /// <summary>
+        /// Desencripta una cadena mediante el método Enigma. Soporta solo las 26 letras del abecedario, en mayuscula o minuscula, y numeros
+        /// </summary>
+        /// <param name="pCadena">Cadena a desencriptar</param>
+        /// <returns>Cadena desencriptada</returns>
 		public override string Desencriptar(string pCadena)
 		{
             string lResult = MaquinaEnigma.Desencriptar(pCadena);

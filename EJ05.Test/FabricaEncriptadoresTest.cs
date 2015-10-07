@@ -2,6 +2,10 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using EJ05;
 using EJ04;
+using System.Collections.Generic;
+using System.Linq;
+using System.Configuration;
+using System.Collections.Specialized;
 
 namespace EJ05.Test
 {
@@ -16,8 +20,8 @@ namespace EJ05.Test
             string lResultadoEsperado = lCadena;
 
             EJ05.FabricaEncriptadores lFabrida = EJ05.FabricaEncriptadores.Instancia;
-
-            IEncriptador lEncriptadorNulo = lFabrida.GetEncriptador("NULO");
+			
+			IEncriptador lEncriptadorNulo = lFabrida.GetEncriptador("NULO");
             IEncriptador lEncriptadorCesar = lFabrida.GetEncriptador("CESAR");
             IEncriptador lEncriptadorAES = lFabrida.GetEncriptador("AES");
             IEncriptador lEncriptadorEnigma = lFabrida.GetEncriptador("ENIGMA");

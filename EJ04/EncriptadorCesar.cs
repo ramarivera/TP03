@@ -40,7 +40,7 @@ namespace EJ04
         }
 
         /// <summary>
-        /// Encripta una cadena mediante el método Cesar. Soporta solo las 26 letras del abecedario, en mayuscula o minuscula, sin ñ.
+        /// Encripta una cadena mediante el método Cesar. Soporta solo las 26 letras del abecedario, en mayuscula o minuscula, y numeros
         /// </summary>
         /// <param name="pCadena">Cadena a encriptar</param>
         /// <returns>Cadena encriptada</returns>
@@ -55,6 +55,14 @@ namespace EJ04
             {
                 bool minuscula = false;
                 ascii = (Convert.ToInt32(pCadena[i]));						// convertimos el caracter a encriptar en su valor ascii
+                if ((ascii >= 48) && (ascii <= 57))
+                {
+                    ascii += desplazar;
+                    if (ascii > 57)									        // si al sumar el desplazamiento nos pasamos del ultimo caracter permitido, volvemos a empezar desde el primero 
+                    {
+                        ascii -= 10;
+                    }
+                }
                 if ((ascii >= MINUS_A) && (ascii <= MINUS_Z))               // verifica si la letra es minuscula
                 {
                     ascii -= 32;                                            // de ser asi, convierte el ascii es la misma letra pero mayuscula
@@ -79,7 +87,7 @@ namespace EJ04
         }
 
         /// <summary>
-        /// Desencripta una cadena mediante el método Cesar. Soporta solo las 26 letras del abecedario, de la "a" a la "z", sin ñ.
+        /// Desencripta una cadena mediante el método Cesar. Soporta solo las 26 letras del abecedario, en mayuscula o minuscula, y numeros
         /// </summary>
         /// <param name="pCadena">Cadena a desencriptar</param>
         /// <returns>Cadena desencriptada</returns>
@@ -94,6 +102,14 @@ namespace EJ04
             {
                 bool minuscula = false;
                 ascii = (Convert.ToInt32(pCadena[i]));						// convertimos el caracter a encriptar en su valor ascii
+                if ((ascii >= 48) && (ascii <= 57))   			            // verifica si el caracter a encriptar es soportado por el encriptador.
+                {
+                    ascii -= desplazar;
+                    if (ascii < 48)									        // si al restar el desplazamiento nos pasamos del primer caracter permitido, volvemos a empezar desde el ultimo 
+                    {
+                        ascii += 10;
+                    }
+                }
                 if ((ascii >= MINUS_A) && (ascii <= MINUS_Z))               // verifica si la letra es minuscula
                 {
                     ascii -= 32;                                            // de ser asi, convierte el ascii es la misma letra pero mayuscula
