@@ -14,6 +14,9 @@ namespace EJ04
         private static readonly string AES_SALT = "Rivera";
         private static readonly string AES_PASSWORD = "pFlEmEL5_¡4#pF";
 
+        /// <summary>
+        /// Inicializa una nueva instancia de <see cref="FabricaEncriptadores"/>. Ademas inicializa los metodos de encriptacion y los coloca en el diccionario
+        /// </summary>
         private FabricaEncriptadores()
         {
             iEncriptadores = new Dictionary<string,IEncriptador>();
@@ -23,6 +26,9 @@ namespace EJ04
             iEncriptadores.Add("Nulo", new EncriptadorNulo());
         }
 
+        /// <summary>
+        /// Propiedad Instancia
+        /// </summary>
         public static FabricaEncriptadores Instancia
         {
             get {if (cInstancia == null)
@@ -30,6 +36,11 @@ namespace EJ04
                 return cInstancia;}
         }
 
+        /// <summary>
+        /// Obtiene del diccionario el encriptador solicitado
+        /// </summary>
+        /// <param name="nombre">Nombre del encriptador</param>
+        /// <returns>Instancia del encriptador</returns>
         public static IEncriptador GetEncriptador(string nombre) 
         {
             IEncriptador resultado;
@@ -43,6 +54,10 @@ namespace EJ04
             }
         }
 
+        /// <summary>
+        /// Obtiene los nombres de los distintos encriptadores
+        /// </summary>
+        /// <returns>Lista de nombres de los encriptadores</returns>
         public static List<string> GetNombres()
         {
             List<string> nombres = new List<string>();

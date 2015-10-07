@@ -11,7 +11,7 @@ namespace EJ04
 		/// <summary>
 		/// Inicializa una nueva instancia de <see cref="EncriptadorNulo"/>
 		/// </summary>
-		public EncriptadorNulo() : base("NULO") { }
+		public EncriptadorNulo() : base("Nulo") { }
 
 		public override string Encriptar(string pCadena)
 		{

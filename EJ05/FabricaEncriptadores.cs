@@ -14,7 +14,10 @@ namespace EJ05
     {
         private static FabricaEncriptadores cInstancia;
         private static Dictionary<string, IEncriptador> iEncriptadores;
-     
+
+        /// <summary>
+        /// Inicializa una nueva instancia de <see cref="FabricaEncriptadores"/> Ademas inicializa los metodos de encriptacion y los coloca en el diccionario
+        /// </summary>
         private FabricaEncriptadores()
         {
             iEncriptadores = new Dictionary<string, IEncriptador>();
@@ -70,6 +73,9 @@ namespace EJ05
 			return Settings.Default.EngConexiones;
 		}
 
+        /// <summary>
+        /// Propiedad Instancia
+        /// </summary>
 		public static FabricaEncriptadores Instancia
         {
             get
@@ -79,11 +85,15 @@ namespace EJ05
                 return cInstancia;
             }
         }
-
-        public IEncriptador GetEncriptador(string nombre)
+        /// <summary>
+        /// Obtiene del diccionario el encriptador solicitado
+        /// </summary>
+        /// <param name="nombre">Nombre del encriptador</param>
+        /// <returns>Instancia del encriptador</returns>
+        public static IEncriptador GetEncriptador(string nombre)
         {
             IEncriptador resultado;
-            if (iEncriptadores.TryGetValue(nombre.ToUpper(), out resultado))
+            if (iEncriptadores.TryGetValue(nombre, out resultado))
             {
                 return resultado;
             }
@@ -91,6 +101,20 @@ namespace EJ05
             {
                 return iEncriptadores["Nulo"];
             }
+        }
+
+        /// <summary>
+        /// Obtiene los nombres de los distintos encriptadores
+        /// </summary>
+        /// <returns>Lista de nombres de los encriptadores</returns>
+        public static List<string> GetNombres()
+        {
+            List<string> nombres = new List<string>();
+            foreach (string nombre in iEncriptadores.Keys)
+            {
+                nombres.Add(nombre);
+            }
+            return nombres;
         }
 
 

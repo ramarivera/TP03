@@ -17,7 +17,7 @@ namespace EJ03
         private double iSueldoMinimo;
 
         /// <summary>
-        /// Constructor de la clase
+        /// Inicializa una nueva instancia de <see cref="EvaluadorSueldo"/>
         /// </summary>
         /// <param name="pSueldoMinimo">Sueldo minimo que debe percibir un Cliente</param>
         public EvaluadorSueldo(double pSueldoMinimo)

@@ -47,7 +47,7 @@ namespace EJ05
         }*/
 
         /// <summary>
-        /// Encripta una cadena mediante el método Enigma. Soporta solo las 26 letras del abecedario, en mayuscula o minuscula, y numeros
+        /// Encripta una cadena mediante el método Enigma.
         /// </summary>
         /// <param name="pCadena">Cadena a desencriptar</param>
         /// <returns>Cadena desencriptada</returns>
@@ -60,7 +60,7 @@ namespace EJ05
 		}
 
         /// <summary>
-        /// Desencripta una cadena mediante el método Enigma. Soporta solo las 26 letras del abecedario, en mayuscula o minuscula, y numeros
+        /// Desencripta una cadena mediante el método Enigma.
         /// </summary>
         /// <param name="pCadena">Cadena a desencriptar</param>
         /// <returns>Cadena desencriptada</returns>

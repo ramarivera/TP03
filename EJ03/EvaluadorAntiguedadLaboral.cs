@@ -17,7 +17,7 @@ namespace EJ03
         private int iAntiguedadMinima;
 
         /// <summary>
-        /// Constructor de la clase
+        /// Inicializa una nueva instancia de <see cref="EvaluadorAntiguedadLaboral"/>
         /// </summary>
         /// <param name="pAntiguedadMinima">Antiguedad minima para poder pedir un prestamo</param>
         public EvaluadorAntiguedadLaboral(int pAntiguedadMinima)

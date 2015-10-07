@@ -22,7 +22,7 @@ namespace EJ03
         private int iEdadMaxima;
 
 		/// <summary>
-		/// Constructor de la Clase
+        /// Inicializa una nueva instancia de <see cref="EvaluadorEdad"/>
 		/// </summary>
 		/// <param name="pEdadMinima"></param>
 		/// <param name="pEdadMaxima"></param>

@@ -40,7 +40,7 @@ namespace EJ03
         }
 
         /// <summary>
-        /// Constructor de la clase
+        /// Inicializa una nueva instancia de <see cref="Empleo"/>
         /// </summary>
         /// <param name="pSueldo">Sueldo del Empleo</param>
         /// <param name="pFechaIngreso">Fecha de Ingreso al Empleo</param>

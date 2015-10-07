@@ -17,7 +17,7 @@ namespace EJ03
         private int iCantidadMaximaCuotas;
 
         /// <summary>
-        /// Constructor de la clase
+        /// Inicializa una nueva instancia de <see cref="EvaluadorCantidadCuotas"/>
         /// </summary>
         /// <param name="pCantidadMaxima">Cnatidad de cuotas maximas para pagar un prestamo</param>
         public EvaluadorCantidadCuotas(int pCantidadMaxima)

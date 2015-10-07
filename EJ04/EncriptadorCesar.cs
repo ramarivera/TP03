@@ -34,7 +34,7 @@ namespace EJ04
         /// Inicializa una nueva instancia de <see cref="EncriptadorCesar"/>
         /// </summary>
         /// <param name="pDesplazamiento">Cantidad de desplazamientos que realiza el encriptado</param>
-        public EncriptadorCesar(int pDesplazamiento): base("CESAR")
+        public EncriptadorCesar(int pDesplazamiento): base("Cesar")
         {
             Desplazamiento = pDesplazamiento;
         }

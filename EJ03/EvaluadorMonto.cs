@@ -17,7 +17,7 @@ namespace EJ03
         private double iMontoMaximo;
 
         /// <summary>
-        /// Constructor de la clase
+        /// Inicializa una nueva instancia de <see cref="EvaluadorMonto"/>
         /// </summary>
         /// <param name="pMontoMaximo">Monto maximo que puede tener el prestamo</param>
         public EvaluadorMonto(double pMontoMaximo)

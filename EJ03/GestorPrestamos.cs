@@ -24,7 +24,7 @@ namespace EJ03
 			set { this.iEvaluadoresPorCliente = value; }
 		}
 		/// <summary>
-		/// Constructor de la clase, inicializa tambien los evaluadores correspondientes
+        /// Inicializa una nueva instancia de <see cref="GestorPrestamos"/>.Inicializa tambien los evaluadores correspondientes
 		/// </summary>
         public GestorPrestamos()
         {

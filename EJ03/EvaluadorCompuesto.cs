@@ -27,7 +27,7 @@ namespace EJ03
 		}
 
 		/// <summary>
-		/// Constructor de la clase
+        /// Inicializa una nueva instancia de <see cref="EvaluadorCompuesto"/>
 		/// </summary>
         public EvaluadorCompuesto()
         {

@@ -82,7 +82,7 @@ namespace EJ03
         }
 
 		/// <summary>
-		/// Constructor de la clase
+        /// Inicializa una nueva instancia de <see cref="Cliente"/>
 		/// </summary>
 		/// <param name="pNombre">Nombre del Cliente</param>
 		/// <param name="pApellido">Apellido del Cliente</param>

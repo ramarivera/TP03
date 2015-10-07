@@ -54,7 +54,7 @@ namespace EJ03
         }
 
         /// <summary>
-        /// Constructor de la clase
+        /// Inicializa una nueva instancia de <see cref="SolicitudPrestamo"/>
         /// </summary>
         /// <param name="pCliente">Cliente que solicita el prestamo</param>
         /// <param name="pMonto">Monto del prestamo</param>
