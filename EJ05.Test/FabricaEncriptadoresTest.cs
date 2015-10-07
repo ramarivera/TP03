@@ -19,12 +19,12 @@ namespace EJ05.Test
             string lResultado;
             string lResultadoEsperado = lCadena;
 
-            EJ05.FabricaEncriptadores lFabrida = EJ05.FabricaEncriptadores.Instancia;
+            EJ05.FabricaEncriptadores lFabrica = EJ05.FabricaEncriptadores.Instancia;
 			
-			IEncriptador lEncriptadorNulo = lFabrida.GetEncriptador("NULO");
-            IEncriptador lEncriptadorCesar = lFabrida.GetEncriptador("CESAR");
-            IEncriptador lEncriptadorAES = lFabrida.GetEncriptador("AES");
-            IEncriptador lEncriptadorEnigma = lFabrida.GetEncriptador("ENIGMA");
+			IEncriptador lEncriptadorNulo = lFabrica.GetEncriptador("NULO");
+            IEncriptador lEncriptadorCesar = lFabrica.GetEncriptador("CESAR");
+            IEncriptador lEncriptadorAES = lFabrica.GetEncriptador("AES");
+            IEncriptador lEncriptadorEnigma = lFabrica.GetEncriptador("ENIGMA");
 
             lResultado = lEncriptadorCesar.Encriptar(lCadena);
             lResultado = lEncriptadorEnigma.Encriptar(lResultado);
