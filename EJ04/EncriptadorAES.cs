@@ -13,6 +13,7 @@ namespace EJ04
     /// </summary>
     internal class EncriptadorAES : Encriptador
     {
+        
         private string Contraseña { get; set; }
 
         private string Sal { get; set; }
@@ -29,22 +30,22 @@ namespace EJ04
         }
 
         /// <summary>
-        /// Encripta una cadena mediante el método AES. Soporta solo las 26 letras del abecedario, en mayuscula o minuscula, y numeros.
+        /// Encripta una cadena de texto
         /// </summary>
         /// <param name="pCadena">Cadena a encriptar</param>
         /// <returns>Cadena encriptada</returns>
         public override string Encriptar(string pCadena)
         {
-            DeriveBytes lRfc = new Rfc2898DeriveBytes(Contraseña, Encoding.Unicode.GetBytes(Sal));
+            DeriveBytes lRfc = new Rfc2898DeriveBytes(Contraseña, Encoding.Unicode.GetBytes(Sal));                              // Inicializo una clase que me permetira derivar una Key y IV
 
-            AesManaged lAes = new AesManaged();
+            AesManaged lAes = new AesManaged();                                                                                 // Inicializo la clase de .Net para realziar el cifrado por el metodo AES
+                                
+            byte[] lKey = lRfc.GetBytes(lAes.KeySize >> 3);                                                                     // Obtengo la Key
+            byte[] lIV = lRfc.GetBytes(lAes.BlockSize >> 3);                                                                    // Obtengo el IV o Vector de Inicializacion 
 
-            byte[] lKey = lRfc.GetBytes(lAes.KeySize >> 3);
-            byte[] lIV = lRfc.GetBytes(lAes.BlockSize >> 3);
+            ICryptoTransform transform = lAes.CreateEncryptor(lKey, lIV);                                                       // Inicializo un encriptador simetrico utilizando la Key y el IV
 
-            ICryptoTransform transform = lAes.CreateEncryptor(lKey, lIV);
-
-            using (MemoryStream buffer = new MemoryStream())
+            using (MemoryStream buffer = new MemoryStream())                                                                    // Utilizamos el Using para definir un contexto especifico de existencia del Objeto
             {
                 using (CryptoStream stream = new CryptoStream(buffer, transform, CryptoStreamMode.Write))
                 {
@@ -58,22 +59,22 @@ namespace EJ04
         }
 
         /// <summary>
-        /// Desencripta una cadena mediante el método AES. Soporta solo las 26 letras del abecedario, en mayuscula o minuscula, y numeros
+        /// Desencripta una cadena de texto previamente encriptada por este encriptador
         /// </summary>
         /// <param name="pCadena">Cadena a desencriptar</param>
         /// <returns>Cadena desencriptada</returns>
         public override string Desencriptar(string pCadena)
         {
-            DeriveBytes lRfc = new Rfc2898DeriveBytes(Contraseña, Encoding.Unicode.GetBytes(Sal));
+            DeriveBytes lRfc = new Rfc2898DeriveBytes(Contraseña, Encoding.Unicode.GetBytes(Sal));                              // Inicializo una clase que me permetira derivar una Key y IV
 
-            AesManaged lAes = new AesManaged();
+            AesManaged lAes = new AesManaged();                                                                                 // Inicializo la clase de .Net para realziar el cifrado por el metodo AES
 
-            byte[] lKey = lRfc.GetBytes(lAes.KeySize >> 3);
-            byte[] lIV = lRfc.GetBytes(lAes.BlockSize >> 3);
+            byte[] lKey = lRfc.GetBytes(lAes.KeySize >> 3);                                                                     // Obtengo la Key
+            byte[] lIV = lRfc.GetBytes(lAes.BlockSize >> 3);                                                                    // Obtengo el IV o Vector de Inicializacion 
 
-            ICryptoTransform transform = lAes.CreateDecryptor(lKey, lIV);
+            ICryptoTransform transform = lAes.CreateEncryptor(lKey, lIV);                                                       // Inicializo un encriptador simetrico utilizando la Key y el IV
 
-            using (MemoryStream buffer = new MemoryStream(Convert.FromBase64String(pCadena)))
+            using (MemoryStream buffer = new MemoryStream(Convert.FromBase64String(pCadena)))                                   // Utilizamos el Using para definir un contexto especifico de existencia del Objeto
             {
                 using (CryptoStream stream = new CryptoStream(buffer, transform, CryptoStreamMode.Read))
                 {
