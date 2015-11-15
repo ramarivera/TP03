@@ -23,12 +23,15 @@ namespace EJ05.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Rivera")]
         public string AESSal {
             get {
                 return ((string)(this["AESSal"]));
+            }
+            set {
+                this["AESSal"] = value;
             }
         }
         

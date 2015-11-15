@@ -53,7 +53,24 @@ namespace EJ05
 		/// <returns>Sal para inicializar el Encriptador AES</returns>
 		private static string GetAESSal()
 		{
-			return SettingsEJ05.Default.AESSal;
+			const string valid = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890$&";
+			StringBuilder res = new StringBuilder();
+			int len = 10;
+			using (System.Security.Cryptography.RNGCryptoServiceProvider rng = new System.Security.Cryptography.RNGCryptoServiceProvider())
+			{
+				byte[] uintBuffer = new byte[sizeof(uint)];
+
+				while (len-- > 0)
+				{
+					rng.GetBytes(uintBuffer);
+					uint num = BitConverter.ToUInt32(uintBuffer, 0);
+					res.Append(valid[(int)(num % (uint)valid.Length)]);
+				}
+			}
+
+			SettingsEJ05.Default.AESSal = res.ToString();
+			SettingsEJ05.Default.Save();
+			return res.ToString();
 		}
 
 		/// <summary>

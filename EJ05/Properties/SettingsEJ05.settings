@@ -1,8 +1,8 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="EJ05.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="EJ05.Properties" GeneratedClassName="SettingsEJ05">
   <Profiles />
   <Settings>
-    <Setting Name="AESSal" Type="System.String" Scope="Application">
+    <Setting Name="AESSal" Type="System.String" Scope="User">
       <Value Profile="(Default)">Rivera</Value>
     </Setting>
     <Setting Name="AESContraseña" Type="System.String" Scope="Application">

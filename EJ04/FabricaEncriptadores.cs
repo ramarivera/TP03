@@ -19,7 +19,7 @@ namespace EJ04
         /// <summary>
         /// Almacena los distintos encriptadores
         /// </summary>
-        private static Dictionary<string,IEncriptador> iEncriptadores;
+        private static Dictionary<string, IEncriptador> iEncriptadores;
 
         /// <summary>
         /// Inicializa una nueva instancia de <see cref="FabricaEncriptadores"/>.
@@ -27,7 +27,7 @@ namespace EJ04
         /// </summary>
         private FabricaEncriptadores()
         {
-            iEncriptadores = new Dictionary<string,IEncriptador>();
+            iEncriptadores = new Dictionary<string, IEncriptador>();
 
             iEncriptadores.Add("Cesar", new EncriptadorCesar(GetCesarDesplazamiento()));
             iEncriptadores.Add("AES", new EncriptadorAES(GetAESContraseña(), GetAESSal()));
@@ -49,7 +49,24 @@ namespace EJ04
         /// <returns>Sal para inicializar el Encriptador AES</returns>
         private static string GetAESSal()
         {
-            return SettingsEJ04.Default.AESSal;
+            const string valid = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890$&";
+            StringBuilder res = new StringBuilder();
+            int len = 10;
+            using (System.Security.Cryptography.RNGCryptoServiceProvider rng = new System.Security.Cryptography.RNGCryptoServiceProvider())
+            {
+                byte[] uintBuffer = new byte[sizeof(uint)];
+
+                while (len-- > 0)
+                {
+                    rng.GetBytes(uintBuffer);
+                    uint num = BitConverter.ToUInt32(uintBuffer, 0);
+                    res.Append(valid[(int)(num % (uint)valid.Length)]);
+                }
+            }
+
+            SettingsEJ04.Default.AESSal = res.ToString();
+            SettingsEJ04.Default.Save();
+            return res.ToString();
         }
 
         /// <summary>
@@ -61,15 +78,18 @@ namespace EJ04
             return SettingsEJ04.Default.AESContraseña;
         }
 
-      
+
         /// <summary>
         /// Propiedad Estatica Instancia, Solo Lectura
         /// </summary>
         public static FabricaEncriptadores Instancia
         {
-            get {if (cInstancia == null)
-                  cInstancia = new FabricaEncriptadores();
-                return cInstancia;}
+            get
+            {
+                if (cInstancia == null)
+                    cInstancia = new FabricaEncriptadores();
+                return cInstancia;
+            }
         }
 
         /// <summary>
@@ -77,7 +97,7 @@ namespace EJ04
         /// </summary>
         /// <param name="nombre">Nombre del encriptador</param>
         /// <returns>Instancia del encriptador</returns>
-        public IEncriptador GetEncriptador(string nombre) 
+        public IEncriptador GetEncriptador(string nombre)
         {
             IEncriptador resultado;
             if (iEncriptadores.TryGetValue(nombre, out resultado))

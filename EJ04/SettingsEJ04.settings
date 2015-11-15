@@ -2,7 +2,7 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="EJ04" GeneratedClassName="SettingsEJ04">
   <Profiles />
   <Settings>
-    <Setting Name="AESSal" Type="System.String" Scope="Application">
+    <Setting Name="AESSal" Type="System.String" Scope="User">
       <Value Profile="(Default)">Martin</Value>
     </Setting>
     <Setting Name="AESContraseña" Type="System.String" Scope="Application">
