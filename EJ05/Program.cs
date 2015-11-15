@@ -12,7 +12,7 @@ namespace EJ05
     /// <summary>
     /// Clase Solucion del Ejercicio 04 del Trabajo Practico 03
     /// </summary>
-	class Program
+    class Program
     {
         private static Facade cFachada;
         /// <summary>
@@ -43,18 +43,18 @@ namespace EJ05
         static void Main(string[] args)
         {
             cFachada = new Facade();
+            string lTexto = null;
+            string lEncriptado = null;
+            string lEncriptador = null;
+            bool lSeguir = true;
 
-            IEncriptador encriptador = null;
-            string texto = null;
-            string encriptado = null;
-            bool seguir = true;
-            while (seguir)
+            while (lSeguir)
             {
                 SeparadorMenuPrincipal();
                 Console.WriteLine("¿Que operacion desea realizar?");
                 Console.WriteLine("1:\t Ingresar texto a encriptar");
                 Console.WriteLine("2:\t Mostrar texto a encriptar");
-                Console.WriteLine("3:\t Elegir metodo para encriptar");
+                Console.WriteLine("3:\t Elegir metodo para encriptar/desencriptar");
                 Console.WriteLine("4:\t Encriptar texto");
                 Console.WriteLine("5:\t Mostrar texto encriptado");
                 Console.WriteLine("6:\t Guardar texto encriptado");
@@ -64,31 +64,29 @@ namespace EJ05
                 switch (int.Parse(Console.ReadLine()))
                 {
                     case 1:
-                        if (texto == null)
+                        if (lTexto == null)
                         {
                             SeparadorOperatoria();
                             Console.Write("Ingrese el texto que desea encriptar ");
-                            texto = Console.ReadLine();
-                            Console.WriteLine("Texto cargado correctamente");
-                            Console.ReadKey();
-                            Console.WriteLine();
+                            lTexto = Console.ReadLine();
+                            Console.Write("Texto cargado correctamente. ");
                         }
                         else
                         {
-                            Console.WriteLine("Ya existe un texto cargado para su encriptacion. Si desea cargar otro reinicie el programa");
-                            Console.ReadKey();
-                            Console.WriteLine();
+                            Console.Write("Ya existe un texto cargado para su encriptacion. Si desea cargar otro reinicie el programa. ");
                         }
+                        Console.ReadKey();
+                        Console.WriteLine();
                         break;
                     case 2:
-                        if (texto != null)
+                        if (lTexto != null)
                         {
                             SeparadorOperatoria();
-                            Console.WriteLine("El texto guardado es: {0}", texto);
+                            Console.Write("El texto guardado es: {0}. ", lTexto);
                         }
                         else
                         {
-                            Console.WriteLine("No hay texto cargado");
+                            Console.Write("No hay texto cargado. ");
                         }
                         Console.ReadKey();
                         Console.WriteLine();
@@ -96,73 +94,73 @@ namespace EJ05
                     case 3:
                         SeparadorOperatoria();
                         Console.WriteLine("Ingrese el numero del metodo que quiere utilizar ");
-                        List<string> nombres = cFachada.ObtenerNombresEncriptadores();
-                        for (int i = 0; i < nombres.Count; i++)
+                        List<string> lNombres = cFachada.ObtenerNombresEncriptadores();
+                        for (int i = 0; i < lNombres.Count; i++)
                         {
-                            Console.WriteLine("\t {0}: {1}", i, (nombres.ElementAt(i)));
+                            Console.WriteLine("\t\t {0}: {1}", i, (lNombres[i]));
                         }
-                        Console.Write("\nOpcion ingresada: ");
-                        encriptador = cFachada.SeleccionarEncriptador(nombres.ElementAt(int.Parse(Console.ReadLine())));
-                        Console.WriteLine("Encriptador seleccionado correctamente");
+                        Console.Write("\t Opcion ingresada: ");
+                        lEncriptador = lNombres[int.Parse(Console.ReadLine())];
+                        Console.Write("Encriptador seleccionado correctamente. ");
                         Console.ReadKey();
                         Console.WriteLine();
                         break;
                     case 4:
-                        if (encriptador != null)
+                        if (lEncriptador != null)
                         {
-                            encriptado = encriptador.Encriptar(texto);
-                            Console.WriteLine("Texto encriptado correctamente");
+                            lEncriptado = cFachada.Encriptar(lEncriptador, lTexto);
+                            Console.Write("Texto encriptado correctamente. ");
                         }
                         else
                         {
-                            Console.WriteLine("Elija un metodo para encriptar");
+                            Console.Write("Elija un metodo para encriptar. ");
                         }
                         Console.ReadKey();
                         Console.WriteLine();
                         break;
                     case 5:
-                        if (encriptado != null)
+                        if (lEncriptado != null)
                         {
-                            Console.WriteLine("El texto encriptado es: {0}", encriptado);
+                            Console.WriteLine("El texto encriptado es: {0}. ", lEncriptado);
                         }
                         else
                         {
-                            Console.WriteLine("No hay texto encriptado");
+                            Console.WriteLine("No hay texto encriptado. ");
                         }
                         Console.ReadKey();
                         Console.WriteLine();
                         break;
                     case 6:
-                        if (encriptado != null)
+                        if (lEncriptado != null)
                         {
-                            texto = encriptado;
-                            Console.WriteLine("Texto guardado correctamente");
+                            lTexto = lEncriptado;
+                            Console.WriteLine("Texto guardado correctamente. ");
                         }
                         else
                         {
-                            Console.WriteLine("No hay texto encriptado");
+                            Console.WriteLine("No hay texto encriptado. ");
                         }
                         Console.ReadKey();
                         Console.WriteLine();
                         break;
                     case 7:
-                        if (encriptado != null)
+                        if (lEncriptador != null)
                         {
-                            texto = encriptador.Desencriptar(texto);
-                            Console.WriteLine("El texto obtenido es: {0}", texto);
+                            lTexto = cFachada.Desencriptar(lEncriptador, lTexto);
+                            Console.WriteLine("El texto obtenido es: {0}. ", lTexto);
                         }
                         else
                         {
-                            Console.WriteLine("No hay texto encriptado");
+                            Console.WriteLine("No hay texto encriptado. ");
                         }
                         Console.ReadKey();
                         Console.WriteLine();
                         break;
                     case 0:
-                        seguir = false;
+                        lSeguir = false;
                         break;
                     default:
-                        Console.Write("Opcion incorrecta. Reintente\n");
+                        Console.Write("Opcion incorrecta. Reintente. ");
                         Console.ReadKey();
                         Console.WriteLine();
                         break;

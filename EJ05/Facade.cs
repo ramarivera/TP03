@@ -10,24 +10,36 @@ namespace EJ05
     class Facade
     {
         /// <summary>
-        /// Permite seleccionar el metodo de encriptacion que se desea utilizar
-        /// </summary>
-        /// <param name="metodo">Nombre del metodo que se desea utilizar</param>
-        /// <returns>Instancia del metodo de encriptacion</returns>
-        public IEncriptador SeleccionarEncriptador(string metodo)
-        {
-            return (FabricaEncriptadores.Instancia.GetEncriptador(metodo));
-        }
-
-        /// <summary>
         /// Permite obtener los nombres de los distitnos metodos de encriptacion
         /// </summary>
         /// <returns>Una lista con los nombres de los metodos de encriptacion</returns>
         public List<string> ObtenerNombresEncriptadores()
         {
-            List<string> lLista = new List<string>();
-            lLista.AddRange(new string[] { "Cesar", "AES", "Null", "Enigma"});
-            return lLista;
+            return new List<string>() { "Cesar", "AES", "Null", "Enigma" };
+        }
+
+        /// <summary>
+        /// Encripta el texto ingresado segun el nombre del encriptador
+        /// </summary>
+        /// <param name="pNombreEncriptador">Nombre del encriptador a utilizar.</param>
+        /// <param name="pTextoLLano">Texto a encriptar</param>
+        /// <returns>Texto encriptado</returns>
+        public string Encriptar(string pNombreEncriptador, string pTextoLLano)
+        {
+            IEncriptador lEncriptador = FabricaEncriptadores.Instancia.GetEncriptador(pNombreEncriptador);
+            return lEncriptador.Encriptar(pTextoLLano);
+        }
+
+        /// <summary>
+        /// Desencripta el texto ingresado segun el nombre del encriptador
+        /// </summary>
+        /// <param name="pNombreEncriptador">Nombre del encriptador a utilizar.</param>
+        /// <param name="pTextoEncriptado">Texto a desencriptar</param>
+        /// <returns>Texto desencriptado</returns>
+        public string Desencriptar(string pNombreEncriptador, string pTextoEncriptado)
+        {
+            IEncriptador lEncriptador = FabricaEncriptadores.Instancia.GetEncriptador(pNombreEncriptador);
+            return lEncriptador.Desencriptar(pTextoEncriptado);
         }
     }
 }

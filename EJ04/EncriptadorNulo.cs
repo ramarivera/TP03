@@ -10,7 +10,7 @@ namespace EJ04
 	/// Clase necesaria para implementar el patron NullObject.
 	/// Tanto La encriptacion como desencriptacion con este encriptador devuelven la misma cadena que se ingreso.
 	/// </summary>
-	internal class EncriptadorNulo : Encriptador
+	internal sealed class EncriptadorNulo : Encriptador
 	{
 		/// <summary>
 		/// Inicializa una nueva instancia de <see cref="EncriptadorNulo"/>
