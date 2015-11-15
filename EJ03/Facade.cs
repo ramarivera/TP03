@@ -51,7 +51,7 @@ namespace EJ03
 		public SolicitudPrestamo CrearSolicitudPrestamo(Cliente pCliente, double pMonto, int pCantidadCuotas)
 		{
 			return new SolicitudPrestamo(pCliente, pMonto, pCantidadCuotas);
-        }
+		}
 		/// <summary>
 		/// Permite obtener la validacion de una solicitud, indicando que gestor se encargara de realizar la misma
 		/// </summary>

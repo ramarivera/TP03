@@ -64,13 +64,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\EnigmaMachine\EnigmaMachine\EnigmaMachine.csproj">
-      <Project>{12d4afe3-c8e4-40e2-bf7c-e8a1cbbd017a}</Project>
-      <Name>EnigmaMachine</Name>
-    </ProjectReference>
     <ProjectReference Include="..\EJ04\EJ04.csproj">
       <Project>{42c505f6-1a0d-4ca4-a311-9f4079ac4050}</Project>
       <Name>EJ04</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EnigmaMachine\EnigmaMachine.csproj">
+      <Project>{12d4afe3-c8e4-40e2-bf7c-e8a1cbbd017a}</Project>
+      <Name>EnigmaMachine</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
