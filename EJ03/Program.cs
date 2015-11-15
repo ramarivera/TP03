@@ -43,16 +43,13 @@ namespace EJ03
 		static void Main(string[] args)
 		{
 			cFachada = new Facade();
-			GestorPrestamos gestor = cFachada.CrearGestor();
-			string nombre, apellido;
-			DateTime fecha;
-			int tipo, cuotas;
-			Empleo empleo = null;
-			Cliente cliente=null;
-            SolicitudPrestamo solicitud;
-			double sueldo,monto;
-			bool seguir = true;
-			while (seguir)
+			string lNombre, lApellido;
+			DateTime lFecha;
+			int lCuotas;
+			string lTipo;
+			double lSueldo, lMonto;
+			bool lSeguir = true;
+			while (lSeguir)
 			{
 				SeparadorMenuPrincipal();
 				Console.WriteLine("¿Que operacion desea realizar?");
@@ -64,78 +61,68 @@ namespace EJ03
 				switch (int.Parse(Console.ReadLine()))
 				{
 					case 1:
-						if (empleo == null)
-						{
-							SeparadorOperatoria();
-							Console.WriteLine("Ingrese los datos del nuevo empleo");
-							Console.Write("\t Sueldo: ");
-							sueldo = double.Parse(Console.ReadLine());
-							Console.Write("\t Fecha de ingreso, en formato AAAA-MM-DD: ");
-							fecha = DateTime.Parse(Console.ReadLine());
-							empleo = cFachada.CrearEmpleo(sueldo, fecha);
-							Console.WriteLine("Empleo cargado correctamente");
-							Console.ReadKey();
-							Console.WriteLine();
-						}
-						else
-						{
-							Console.WriteLine("Ya existe un empleo cargado");
-							Console.ReadKey();
-							Console.WriteLine();
-						}
+						SeparadorOperatoria();
+						Console.WriteLine("Ingrese los datos del nuevo empleo");
+						Console.Write("\t Sueldo: ");
+						lSueldo = double.Parse(Console.ReadLine());
+						Console.Write("\t Fecha de ingreso, en formato AAAA-MM-DD: ");
+						lFecha = DateTime.Parse(Console.ReadLine());
+						cFachada.CargarEmpleo(lSueldo, lFecha);
+						Console.WriteLine("Empleo cargado correctamente");
+						Console.ReadKey();
+						Console.WriteLine();
 						break;
 					case 2:
-						if (empleo != null)
+						SeparadorOperatoria();
+						Console.WriteLine("Ingrese los datos del nuevo cliente");
+						Console.Write("\t Nombre: ");
+						lNombre = Console.ReadLine();
+						Console.Write("\t Apellido: ");
+						lApellido = Console.ReadLine();
+						Console.Write("\t Fecha de nacimiento, en formato AAAA-MM-DD: ");
+						lFecha = DateTime.Parse(Console.ReadLine());
+						Console.WriteLine("\t Tipo de Cliente: ");
+						List<String> lListaTipos = cFachada.ObtenerNombreCuentas();
+						for (int i = 0; i < lListaTipos.Count; i++)
 						{
-							SeparadorOperatoria();
-							Console.WriteLine("Ingrese los datos del nuevo cliente");
-							Console.Write("\t Nombre: ");
-							nombre = Console.ReadLine();
-							Console.Write("\t Apellido: ");
-							apellido = Console.ReadLine();
-							Console.Write("\t Fecha de nacimiento, en formato AAAA-MM-DD: ");
-							fecha = DateTime.Parse(Console.ReadLine());
-							Console.WriteLine("\t Numero de tipo de Cliente: ");
-							for (int i = 0; i < Enum.GetNames(typeof(TipoCliente)).Length; i++)
-							{
-								Console.WriteLine("\t {0}: {1}", i, (TipoCliente)i);
-							}
-							tipo = int.Parse(Console.ReadLine());
-							cliente = cFachada.CrearCliente(nombre, apellido, fecha, empleo, (TipoCliente)tipo);
-							Console.WriteLine("Cliente cargado correctamente");
+							Console.WriteLine("\t\t {0}: {1}", i, lListaTipos[i]);
 						}
+						Console.WriteLine("\t Eleccion:");
+						lTipo = lListaTipos[int.Parse(Console.ReadLine())];
+						if (cFachada.CargarCliente(lNombre, lApellido, lFecha, lTipo))
+						{
+							Console.WriteLine("Cliente cargado correctamente");
+						} 
 						else
 						{
-							Console.WriteLine("No hay un empleo cargado para el nuevo cliente. Cargue un empleo");			
+							Console.WriteLine("El cliente no se pudo cargar, verifique que exista un empleo cargado");
 						}
-                        Console.ReadKey();
-						Console.WriteLine();
-                        break;
+
+						break;
 					case 3:
 						SeparadorOperatoria();
 						Console.WriteLine("Ingrese los datos de la nueva solicitud de prestamo");
 						Console.Write("\t Monto del prestamo: ");
-						monto = double.Parse(Console.ReadLine());
-                        Console.Write("\t Cantidad de cuotas ");
-                        cuotas = int.Parse(Console.ReadLine());
-                        solicitud = cFachada.CrearSolicitudPrestamo(cliente,monto,cuotas);
-                        if (cFachada.ValidarSolicitud(gestor,solicitud))
-                        {
-                            Console.WriteLine("La solicitud agregada es válida");
-                        }
-                        else
-                        {
-                            Console.WriteLine("La solicitud agregada no es válida");
-                            Console.WriteLine("Su edad debe ser entre 18 y 75");
-                            Console.WriteLine("Su antiguedad debe ser mayor a 6 meses");
-                            Console.WriteLine("Su sueldo debe ser mayor a $5000");
-                            Console.WriteLine("Verifique que el monto solicitado y la cantidad de cuotas se corresponda con su tipo de cliente");
-                        }
+						lMonto = double.Parse(Console.ReadLine());
+						Console.Write("\t Cantidad de cuotas ");
+						lCuotas = int.Parse(Console.ReadLine());
+						if (cFachada.ValidarSolicitudPrestamo(lMonto, lCuotas))
+						{
+							Console.WriteLine("La solicitud agregada es válida");
+						}
+						else
+						{
+							Console.WriteLine(  "La solicitud agregada no es válida\n" +
+												"Su edad debe ser entre 18 y 75\n" + 
+												"Su antiguedad debe ser mayor a 6 meses\n" +
+												"Su sueldo debe ser mayor a $5000\n" +
+												"Verifique que el monto solicitado y la cantidad de cuotas se corresponda con su tipo de cliente");
+						}
 						Console.ReadKey();
 						Console.WriteLine();
 						break;
 					case 0:
-						seguir = false;
+						lSeguir = false;
 						break;
 					default:
 						Console.Write("Opcion incorrecta. Reintente\n");
@@ -145,6 +132,6 @@ namespace EJ03
 				}
 			}
 			GoodBye();
-        }
+		}
 	}
 }
