@@ -77,7 +77,7 @@ namespace EnigmaMachineTest
 			string lCadena = "ACBD";
 			char lResultado;
 			char lResultadoEsperado;
-			Dictionary<char, char> lConf1 = new Dictionary<char, char>();
+            Dictionary<char, char> lConf1 = new Dictionary<char, char>();
 			Dictionary<char, char> lConf2 = new Dictionary<char, char>();
 			TableroConexiones lPlugBoard = new TableroConexiones();
 			if (TableroConexiones.ConfiguracionValida(lCadena))

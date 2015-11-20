@@ -49,24 +49,26 @@ namespace EJ04
         /// <returns>Sal para inicializar el Encriptador AES</returns>
         private static string GetAESSal()
         {
-            const string valid = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890$&";
-            StringBuilder res = new StringBuilder();
-            int len = 10;
-            using (System.Security.Cryptography.RNGCryptoServiceProvider rng = new System.Security.Cryptography.RNGCryptoServiceProvider())
-            {
-                byte[] uintBuffer = new byte[sizeof(uint)];
+            return SettingsEJ04.Default.AESSal;
 
-                while (len-- > 0)
-                {
-                    rng.GetBytes(uintBuffer);
-                    uint num = BitConverter.ToUInt32(uintBuffer, 0);
-                    res.Append(valid[(int)(num % (uint)valid.Length)]);
-                }
-            }
+            /* const string valid = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890$&";
+             StringBuilder res = new StringBuilder();
+             int len = 10;
+             using (System.Security.Cryptography.RNGCryptoServiceProvider rng = new System.Security.Cryptography.RNGCryptoServiceProvider())
+             {
+                 byte[] uintBuffer = new byte[sizeof(uint)];
 
-            SettingsEJ04.Default.AESSal = res.ToString();
-            SettingsEJ04.Default.Save();
-            return res.ToString();
+                 while (len-- > 0)
+                 {
+                     rng.GetBytes(uintBuffer);
+                     uint num = BitConverter.ToUInt32(uintBuffer, 0);
+                     res.Append(valid[(int)(num % (uint)valid.Length)]);
+                 }
+             }
+
+             SettingsEJ04.Default.AESSal = res.ToString();
+             SettingsEJ04.Default.Save();
+             return res.ToString();*/
         }
 
         /// <summary>

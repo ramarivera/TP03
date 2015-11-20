@@ -61,6 +61,10 @@
     <Compile Include="EnigmaEngineTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EJ05\EJ05.csproj">
+      <Project>{da771f87-2b50-4165-86c4-0b471245b3cd}</Project>
+      <Name>EJ05</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EnigmaMachine\EnigmaMachine.csproj">
       <Project>{12d4afe3-c8e4-40e2-bf7c-e8a1cbbd017a}</Project>
       <Name>EnigmaMachine</Name>

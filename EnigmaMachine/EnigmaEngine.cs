@@ -123,13 +123,14 @@ namespace EnigmaMachine
 		private string PrepararCadenaEncriptacion (string pCadena)
 		{
 			string lCadena  = pCadena.Replace(" ", "$20");			// Elimino Espacios
-            StringBuilder lConv = new StringBuilder ();
+			StringBuilder lConv = new StringBuilder ();
 			
-			for (int i = 0; i < lConv.Length; i++)
+			for (int i = 0; i < lCadena.Length; i++)
 			{
 				if (char.IsDigit(lCadena[i]))
 				{
-					lConv.Append("YY" + CONVERSION_NUMEROS[lCadena[i]]);		// Reemplazo Numeros
+					int ind = (int) char.GetNumericValue(lCadena[i]);
+					lConv.Append("YY" + CONVERSION_NUMEROS[ind]);		// Reemplazo Numeros
 				}
 				else
 				{
@@ -140,7 +141,7 @@ namespace EnigmaMachine
 					lConv.Append(' ');											// Separo en Bloques
 				}
 			}
-			return lCadena.ToString();
+			return lConv.ToString();
 		}
 
 		/// <summary>
@@ -151,19 +152,19 @@ namespace EnigmaMachine
 		/// <returns>Cadena lista para ser Desencriptada</returns>
 		private string PrepararCadenaDesencriptacion(string pCadena)
 		{
-			string lCadena = pCadena.Replace(" ", string.Empty);
-			lCadena = lCadena.Replace("YYP", "0");
-			lCadena = lCadena.Replace("YYQ", "1");
-			lCadena = lCadena.Replace("YYW", "2");
-			lCadena = lCadena.Replace("YYE", "3");
-			lCadena = lCadena.Replace("YYR", "4");
-			lCadena = lCadena.Replace("YYT", "5");
-			lCadena = lCadena.Replace("YYZ", "6");
-			lCadena = lCadena.Replace("YYU", "7");
-			lCadena = lCadena.Replace("YYO", "8");
-			lCadena = lCadena.Replace("YYI", "9");
-			lCadena = pCadena.Replace("$20", " ");
-			return lCadena;
+			string lResultado = pCadena.Replace(" ", string.Empty);
+			lResultado = lResultado.Replace("YYP", "0");
+			lResultado = lResultado.Replace("YYQ", "1");
+			lResultado = lResultado.Replace("YYW", "2");
+			lResultado = lResultado.Replace("YYE", "3");
+			lResultado = lResultado.Replace("YYR", "4");
+			lResultado = lResultado.Replace("YYT", "5");
+			lResultado = lResultado.Replace("YYZ", "6");
+			lResultado = lResultado.Replace("YYU", "7");
+			lResultado = lResultado.Replace("YYO", "8");
+			lResultado = lResultado.Replace("YYI", "9");
+			lResultado = lResultado.Replace("$20", " ");
+			return lResultado;
 		}
 
 		/// <summary>
@@ -199,14 +200,14 @@ namespace EnigmaMachine
 				lResult = Rotores.Cifrar(false, lResult);				// Atraviesa la cadena de rotores de izquierda a derecha (Inversa)
 				lResult = Tablero.Conectar(lResult);					// Atraviesa nuevamente el tablero de conexiones, pudiendo o no cambiar su valor
 				Rotores.Girar();                                        // Por ultimo, se realiza el giro del primer rotor (El de mas a la derecha en la maquina enigma)
-                lResult = char.IsLower(pChar) ? char.ToLower(lResult) : lResult;
-            }
+				lResult = char.IsLower(pChar) ? char.ToLower(lResult) : lResult;
+			}
 			return lResult;
 		}
 
-        public static bool ValidarConfiguracionTablero (string pConfiguracion)
-        {
-            return TableroConexiones.ConfiguracionValida(pConfiguracion);
-        }
+		public static bool ValidarConfiguracionTablero (string pConfiguracion)
+		{
+			return TableroConexiones.ConfiguracionValida(pConfiguracion);
+		}
 	}
 }

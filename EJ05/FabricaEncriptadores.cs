@@ -55,7 +55,7 @@ namespace EJ05
 		{
 			const string valid = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890$&";
 			StringBuilder res = new StringBuilder();
-			int len = 10;
+			int len = 6;
 			using (System.Security.Cryptography.RNGCryptoServiceProvider rng = new System.Security.Cryptography.RNGCryptoServiceProvider())
 			{
 				byte[] uintBuffer = new byte[sizeof(uint)];

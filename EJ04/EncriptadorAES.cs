@@ -66,13 +66,13 @@ namespace EJ04
 		public override string Desencriptar(string pCadena)
 		{
 			DeriveBytes lRfc = new Rfc2898DeriveBytes(Contraseña, Encoding.Unicode.GetBytes(Sal));                              // Inicializo una clase que me permetira derivar una Key y IV
-
+            //this
 			AesManaged lAes = new AesManaged();                                                                                 // Inicializo la clase de .Net para realziar el cifrado por el metodo AES
 
 			byte[] lKey = lRfc.GetBytes(lAes.KeySize >> 3);                                                                     // Obtengo la Key
 			byte[] lIV = lRfc.GetBytes(lAes.BlockSize >> 3);                                                                    // Obtengo el IV o Vector de Inicializacion 
 
-			ICryptoTransform transform = lAes.CreateEncryptor(lKey, lIV);                                                       // Inicializo un encriptador simetrico utilizando la Key y el IV
+			ICryptoTransform transform = lAes.CreateDecryptor(lKey, lIV);                                                       // Inicializo un encriptador simetrico utilizando la Key y el IV
 
 			using (MemoryStream buffer = new MemoryStream(Convert.FromBase64String(pCadena)))                                   // Utilizamos el Using para definir un contexto especifico de existencia del Objeto
 			{

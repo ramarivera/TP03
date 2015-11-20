@@ -46,7 +46,7 @@ namespace EnigmaMachine
 		public char Reflejar(char pLetra)
 		{
 			int lPos = Configuracion.IndexOf(pLetra);
-			return Configuracion[(lPos+13) % 26];
+            return Configuracion[(lPos+13) % 26];
 		}
 	}
 }
